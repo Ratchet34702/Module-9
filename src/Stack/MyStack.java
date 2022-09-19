@@ -32,7 +32,7 @@ public class MyStack<E> implements MyStackInterface<E> {
 
     @Override
     public E pop() {
-        E temp = elementsList.get(size() - 1);
+        E temp = peek();
         elementsList.remove(size() - 1);
         return temp;
     }
