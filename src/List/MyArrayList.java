@@ -3,11 +3,19 @@ package List;
 public class MyArrayList<E> implements MyList<E> {
     private E[] elementsArray;
     private int currentLength;
-
     private final static int MIN_CAPACITY = 10;
 
     public MyArrayList() {
         clear();
+    }
+
+    public MyArrayList(int size) {
+        if (size < 1) {
+            clear();
+        } else {
+            elementsArray = (E[]) new Object[size];
+            currentLength = 0;
+        }
     }
 
     public MyArrayList(E[] array) {
@@ -21,6 +29,13 @@ public class MyArrayList<E> implements MyList<E> {
     public void add(E value) {
         elementsArray[currentLength++] = value;
         grow();
+    }
+
+    public void set(int index, E value) {
+        if (index < 0 || index > currentLength) {
+            throw new IndexOutOfBoundsException(index + " " + size());
+        }
+        elementsArray[index] = value;
     }
 
     @Override
@@ -61,6 +76,10 @@ public class MyArrayList<E> implements MyList<E> {
         }
         stringBuilder.append("]");
         return stringBuilder.toString();
+    }
+
+    public int getCapacity() {
+        return elementsArray.length;
     }
 
     private void grow() {

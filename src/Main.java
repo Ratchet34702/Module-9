@@ -1,24 +1,17 @@
 import List.*;
-import Stack.MyStack;
-
-import java.util.HashMap;
+import Map.MyHashMap;
+import Map.MyMap;
 
 public class Main {
     public static void main(String[] args) {
 
-        MyStack<Integer> myStack = new MyStack<>();
-        System.out.println(myStack);
-        for (int i = 0; i < 50; i++)  {
-            myStack.push(i);
-            System.out.println(myStack);
+        MyMap<Integer, String> myHashMap = new MyHashMap<Integer, String>();
+        for (int i = 0; i < 2000; i++) {
+            myHashMap.put(i, String.valueOf(i));
         }
-        for (int i = 0; i < 40; i++)  {
-            myStack.pop();
-            System.out.println(myStack);
+        long time = System.currentTimeMillis();
+        for (int i = 0; i < 100; i++) {
+            System.out.println(myHashMap.get(i) + ' ');
         }
-
-        HashMap<Integer, String> hashMap = new HashMap<>();
-
-
     }
 }
