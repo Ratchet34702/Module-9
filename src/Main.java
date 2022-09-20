@@ -3,6 +3,8 @@ import Map.MyHashMap;
 import Map.MyMap;
 
 public class Main {
+
+    //TODO: Create tests, implement few toStrings
     public static void main(String[] args) {
 
         MyMap<Integer, String> myHashMap = new MyHashMap<Integer, String>();
