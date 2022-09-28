@@ -68,6 +68,15 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
     }
 
     @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder("[");
+        for(Entry<K, V> entry: entryArray) {
+            stringBuilder.append(entry);
+        }
+        return stringBuilder.append("]").toString();
+    }
+
+    @Override
     public void clear() {
         entryArray = new Entry[INITIAL_CAPACITY];
         size = 0;
@@ -90,7 +99,6 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
         }
         return null;
     }
-
 
     private int getHash(K key) {
         return key.hashCode() % entryArray.length;
@@ -127,5 +135,15 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
             this.next = next;
         }
 
+        @Override
+        public String toString() {
+            StringBuilder stringBuilder = new StringBuilder();
+            Entry<K, V> temp = this;
+            while (Objects.nonNull(temp)) {
+                stringBuilder.append(temp.key).append("=").append(temp.value).append(", ");
+                temp = temp.next;
+            }
+            return stringBuilder.toString();
+        }
     }
 }

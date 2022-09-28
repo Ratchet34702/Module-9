@@ -4,13 +4,16 @@ import List.MyLinkedList;
 
 public class MyQueue<E> implements MyQueueInterface<E> {
 
-    private MyLinkedList<E> myLinkedList;
+    private final MyLinkedList<E> myLinkedList;
+
+    public MyQueue() {
+        myLinkedList = new MyLinkedList<>();
+    }
 
     @Override
     public void add(E value) {
         myLinkedList.add(value);
     }
-
 
     @Override
     public void clear() {
@@ -32,5 +35,10 @@ public class MyQueue<E> implements MyQueueInterface<E> {
         E temp = peek();
         myLinkedList.remove(0);
         return temp;
+    }
+
+    @Override
+    public String toString() {
+        return myLinkedList.toString();
     }
 }
